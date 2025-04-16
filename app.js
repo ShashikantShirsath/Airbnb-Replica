@@ -92,9 +92,14 @@ app.use((req, res, next) => {
 //     res.send(registeredUser);
 // });
 
-app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter);
+// User routes should come first
 app.use("/", userRouter);
+
+// Then listing routes
+app.use("/", listingRouter);
+
+// Review routes should be mounted on the listing router
+app.use("/listings/:id/reviews", reviewRouter);
 
 // page not found middleware
 app.all("*", (req, res, next) => {

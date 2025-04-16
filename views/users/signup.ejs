@@ -1,24 +1,54 @@
 <%- layout("./layouts/boilerplate.ejs") %>
 
-<div class="row mt-3">
-    <h1 class="col-8 offset-2">Signup on Wanderlust</h1>
-    <div class="col-8 offset-2">
-        <form action="/signup" method="POST" class="needs-validation" novalidate>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" name="username" id="username" class="form-control" required />
-                <div class="valid-feedback">Username looks good!</div>
-                <!-- <div class="invalid-feedback">Username should be entered</div> -->
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" name="email" id="email" class="form-control" required />
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control" required />
-            </div>
-            <button class="btn btn-success mb-3">Signup</button>
-        </form>
-    </div>
+<div class="auth-container">
+    <h1 class="auth-title">Create Account</h1>
+    <form action="/signup" method="POST" class="auth-form needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" id="username" class="form-control" required />
+            <div class="valid-feedback">Username looks good!</div>
+            <div class="invalid-feedback">Please choose a username</div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required />
+            <div class="invalid-feedback">Please enter a valid email address</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" required />
+            <div class="form-text">Password must be at least 8 characters long</div>
+            <div class="invalid-feedback">Please enter a password</div>
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required />
+            <div class="invalid-feedback">Please confirm your password</div>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="terms" required>
+            <label class="form-check-label" for="terms">
+                I agree to the <a href="/terms" class="text-primary">Terms of Service</a> and <a href="/privacy" class="text-primary">Privacy Policy</a>
+            </label>
+            <div class="invalid-feedback">You must agree to the terms and conditions</div>
+        </div>
+        <button class="btn btn-primary mb-3">Create Account</button>
+        
+        <div class="auth-divider">
+            <span>or continue with</span>
+        </div>
+        
+        <div class="social-auth">
+            <button type="button" class="social-auth-btn">
+                <i class="fab fa-google"></i> Google
+            </button>
+            <button type="button" class="social-auth-btn">
+                <i class="fab fa-facebook"></i> Facebook
+            </button>
+        </div>
+        
+        <div class="auth-switch">
+            Already have an account? <a href="/login">Sign in</a>
+        </div>
+    </form>
 </div>
